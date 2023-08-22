@@ -59,7 +59,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage }) {
 
   const fahrenheitToCelsius = (fahrenheit) => {
     const celsius = 5 / 9 * (fahrenheit - 32);
-    const formattedNum = parseFloat(celsius.toFixed(1));
+    const formattedNum = parseFloat(celsius.toFixed(0));
     return formattedNum;
   }
 
