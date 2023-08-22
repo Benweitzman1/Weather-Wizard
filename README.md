@@ -2,7 +2,7 @@
 
 **Weather Wizard** is a seamless and intuitive weather application designed to provide accurate, up-to-date weather information for any city worldwide. Built with React and leveraging modern weather APIs, our application aims to provide users with a clear understanding of the current weather conditions, as well as a 5-day forecast.
 
-🚀 **Live Application**: [Weather Wizard](https://benweitzman1.github.io/Weather-Wizard/)
+🚀 **Live Application**: [Weather Wizard](https://benweitzman1.github.io/ben-weitzman-17-08-2023/)
 
 ## Table of Contents
 
@@ -69,6 +69,7 @@ Here's a brief outline of the main components and modules:
 - api: Contains API calls to retrieve weather data.
 
   Redux slices:
+
 - favoritesSlice: Manages the state for favorite cities.
 - weatherSlice: Manages the state for the weather data of the selected city.
 
