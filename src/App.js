@@ -7,8 +7,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Container  } from '@mui/system';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useMediaQuery } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -43,13 +45,15 @@ function App() {
     },
   });
   
+  const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('sm'));
+
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div style={{ display: 'flex', height: '100vh' }}>
+      <div style={{ display: 'flex', flexDirection: isSmallScreen ? 'column' : 'row', height: '100vh' }}>  {/* Change flexDirection to column */}
           <SideBar darkMode={darkMode} setDarkMode={setDarkMode} />
-          <Container maxWidth="lg" style={{ display: 'flex', flexGrow: 1 }}>
-            <div style={{ flex: 1, overflow: 'auto' }}>
+          <Container maxWidth="lg" style={{ display: 'flex', flexGrow: 1, width: '100%' }}>  {/* Ensure full width */}
+            <div style={{ flex: 1, overflow: 'auto', width: '100%' }}>  {/* Ensure full width */}
               <Routes>
                 <Route path="/favorites"
                   element={

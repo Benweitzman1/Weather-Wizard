@@ -9,6 +9,9 @@ import { blue, grey } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useTheme } from '@mui/material/styles';
+import { RiHeartAddLine } from "react-icons/ri";
+import { RiHeartFill } from "react-icons/ri";
+
 
 function MainScreen({ setSnackbarOpen, setSnackbarMessage }) {
   const weatherData = useSelector(state => state.weather);
@@ -98,7 +101,12 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage }) {
     <Container maxWidth="lg">
       <SearchBar setCity={setCity} />
       {city && weatherData.currentWeather && weatherData.currentWeather.length > 0 && weatherData.forecast ? (
-        <Paper elevation={15} style={{ padding: '20px', marginTop: '40px', backgroundColor: theme.palette.background.paper }}>
+        <Paper elevation={15} style={{
+          padding: '20px',
+          marginTop: '40px',
+          backgroundColor: theme.palette.background.paper,
+          borderRadius: '15px',
+          }}>
           <Grid container spacing={2} alignItems="center">
             <Grid item xs={12} md={8} style={{ display: 'flex', alignItems: 'center', marginBottom: '65px' }}>
               <div>
@@ -108,8 +116,8 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage }) {
               </div>
               <Box display="flex" flexDirection="column" alignItems="center" ml={3}>
                 {isFavorite(city.Key) ? 
-                  <FavoriteIcon fontSize="large" style={{ color: blue[500] }} /> : 
-                  <FavoriteBorderIcon fontSize="large" style={{ color: blue[500] }} />
+                  <RiHeartFill fontSize="large" style={{ color: blue[500] }} /> : 
+                  <RiHeartAddLine fontSize="large" style={{ color: blue[500] }} />
                 }
                 <Typography 
                   variant="caption" 
