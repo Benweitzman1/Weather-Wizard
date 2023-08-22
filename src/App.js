@@ -48,7 +48,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Container>
+        <Container maxWidth="lg">
           <Header darkMode={darkMode} setDarkMode={setDarkMode} />
           <Routes>
             <Route path="/favorites"
