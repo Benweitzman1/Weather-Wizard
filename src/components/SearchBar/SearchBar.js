@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { searchCity } from '../../utils/api';
-import { TextField, List, ListItem, Box } from '@mui/material';
+import { TextField, List, ListItem, Box, Paper } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+
 
 function SearchBar({ setCity }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
+  const theme = useTheme();
 
   const handleSearchChange = async (e) => {
     const value = e.target.value;
@@ -37,32 +40,51 @@ function SearchBar({ setCity }) {
   }
 
   return (
-    <Box mt={5}> 
-      <TextField
-        fullWidth
-        label="Search for city"
-        variant="outlined"
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
+    <Paper elevation={15} style={{
+      // padding: '10px', 
+      marginTop: '20px', 
+      marginBottom: '20px', 
+      borderRadius: '15px', 
+      backgroundColor: theme.palette.background.paper
+    }}>
+      <Box mt={5}> 
+        <TextField
+          fullWidth
+          label="Search for city"
+          variant="outlined"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          style={{
+            borderRadius: '15px',
+            boxShadow: 'none',
+          }}
+          InputProps={{  // Apply styles to the input inside the TextField
+            disableUnderline: true,  // Removes the underline
+            style: {
+              borderRadius: '15px',
+              background: 'transparent',
+            }
+          }}
+        />
 
-      {results.length > 0 && (
-        <List component="nav">
-          {results.map((result, idx) => (
-            <ListItem 
-              button 
-              key={idx} 
-              onClick={() => {
-                setCity(result);
-                setSearchTerm(result.LocalizedName);
-                setResults([]);
-              }}>
-              {result.LocalizedName}
-            </ListItem>
-          ))}
-        </List>
-      )}
-    </Box>
+        {results.length > 0 && (
+          <List component="nav">
+            {results.map((result, idx) => (
+              <ListItem 
+                button 
+                key={idx} 
+                onClick={() => {
+                  setCity(result);
+                  setSearchTerm(result.LocalizedName);
+                  setResults([]);
+                }}>
+                {result.LocalizedName}
+              </ListItem>
+            ))}
+          </List>
+        )}
+      </Box>
+      </Paper>
   );
 }
 

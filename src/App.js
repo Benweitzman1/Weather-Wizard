@@ -49,7 +49,8 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+      {/* <Router basename={process.env.PUBLIC_URL}> */}
+      <Router >
       <div style={{ display: 'flex', flexDirection: isSmallScreen ? 'column' : 'row', height: '100vh' }}>  {/* Change flexDirection to column */}
           <SideBar darkMode={darkMode} setDarkMode={setDarkMode} />
           <Container maxWidth="lg" style={{ display: 'flex', flexGrow: 1, width: '100%' }}>  {/* Ensure full width */}
