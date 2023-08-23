@@ -61,12 +61,11 @@ function SideBar({ darkMode, setDarkMode }) {
               padding: '1rem 0',
               borderRadius: '15px',
               margin: '2%',
-            //   marginTop: '5%'
             }}
           >
             <Box
               display="flex"
-              flexDirection="column"
+              flexDirection={isSmallScreen ? 'row' : 'column'}
               alignItems="center"
             //   height={'auto'}
             //   width={'auto'}
@@ -74,7 +73,13 @@ function SideBar({ darkMode, setDarkMode }) {
               width={isSmallScreen ? '50px' : 'auto'}
               paddingRight={isSmallScreen ? '1rem' : '0'}
             >
-              <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => setMenuOpen(!menuOpen)}>
+              <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={() => setMenuOpen(!menuOpen)}
+              style={{ marginLeft: isSmallScreen ? '10px' : '0' }}
+              >  
                 <MenuIcon fontSize="3rem" />
               </IconButton>
               <Switch
@@ -92,7 +97,8 @@ function SideBar({ darkMode, setDarkMode }) {
               justifyContent="space-between"
               alignItems="center"
               height="100%"
-              paddingBottom={isSmallScreen ? '6rem' : '0'}
+            //   paddingBottom={isSmallScreen ? '6rem' : '0'}
+            //   marginTop={isSmallScreen ? '10px' : '0'}
           >
                 {buttonComponent("/", <HomeIcon fontSize="3rem" />, "Home")}
                 {buttonComponent("/favorites", <FavoriteIcon fontSize="3rem" />, "Favorites")}
