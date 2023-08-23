@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/ben-weitzman-17-08-2023/static/js/main.7f509e91.js",
+    "main.js": "/ben-weitzman-17-08-2023/static/js/main.e8c54f8d.js",
     "index.html": "/ben-weitzman-17-08-2023/index.html",
-    "main.7f509e91.js.map": "/ben-weitzman-17-08-2023/static/js/main.7f509e91.js.map"
+    "main.e8c54f8d.js.map": "/ben-weitzman-17-08-2023/static/js/main.e8c54f8d.js.map"
   },
   "entrypoints": [
-    "static/js/main.7f509e91.js"
+    "static/js/main.e8c54f8d.js"
   ]
 }
