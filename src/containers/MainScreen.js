@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../components/searchBar/SearchBar";
-import CurrentWeather from "../components/currentWeather/CurrentWeather";
+import CurrentWeather from "../components/CCCCCcurrentWeather/CurrentWeather";
 import FiveDayForecast from "../components/fiveDayForecast/FiveDayForecast";
 import {
   searchCity,
@@ -54,7 +54,6 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
           Forecast: fiveDayForecast,
           WeatherIcon: conditions[0].WeatherIcon,
         };
-        console.log("WeatherIcon", currCity.WeatherIcon);
         dispatch(setWeatherForSelectedCity(currCity));
       } catch (error) {
         console.error(error);

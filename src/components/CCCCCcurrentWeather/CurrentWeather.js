@@ -90,19 +90,13 @@ function CurrentWeather({
   }));
 
   const getIcon = (iconNumber) => {
-    console.log({ iconNumber });
     try {
-      const imagePath = `./${iconNumber}.png`;
-      console.log("Generated image path:", imagePath);
-
-      return iconContext(`./${iconNumber}.png`).default;
+      return iconContext(`./${iconNumber}.png`);
     } catch (error) {
       console.error(`Icon "${iconNumber}.png" not found.`);
       return null;
     }
   };
-
-  console.log({ city });
 
   return (
     <Paper
@@ -196,20 +190,22 @@ function CurrentWeather({
             </Typography>
             <Typography
               variant="h5"
-              style={{ color: darkMode ? grey[100] : grey[600] }}
+              style={{
+                color: darkMode ? grey[100] : grey[600],
+                textAlign: "center",
+              }}
             >
               {weatherData.currentWeather[0].WeatherText}
             </Typography>
           </div>
-          <Grid item xs={12} md={4}>
-            {getIcon(weatherData.currentWeather[0].WeatherIcon) &&
-              (console.log("Rendering image..."),
-              (
-                <img
-                  src={getIcon(weatherData.currentWeather[0].WeatherIcon)}
-                  alt={`Selected ${weatherData.currentWeather[0].WeatherIcon}`}
-                />
-              ))}
+          <Grid item xs={12} md={4} style={{ textAlign: "center" }}>
+            {getIcon(weatherData.currentWeather[0].WeatherIcon) && (
+              <img
+                src={getIcon(weatherData.currentWeather[0].WeatherIcon)}
+                alt={`Weather condition for ${city.LocalizedName}`}
+                style={{ width: "200px", height: "120px" }}
+              />
+            )}
           </Grid>
         </Grid>
       </Grid>
