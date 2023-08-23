@@ -1,12 +1,16 @@
 {
   "files": {
-    "main.js": "/ben-weitzman-17-08-2023/static/js/main.a9c291ef.js",
+    "main.js": "/ben-weitzman-17-08-2023/static/js/main.80dad10a.js",
     "static/media/darkWeatherBackground.jpeg": "/ben-weitzman-17-08-2023/static/media/darkWeatherBackground.4183b7df87f34a85b2e0.jpeg",
     "static/media/background.jpg": "/ben-weitzman-17-08-2023/static/media/background.a42ba6f1c03ec5ce3ba7.jpg",
+    "static/media/17.png": "/ben-weitzman-17-08-2023/static/media/17.4b8d4543699af9743509.png",
+    "static/media/41.png": "/ben-weitzman-17-08-2023/static/media/41.da8960711b2a7bdd80c0.png",
+    "static/media/16.png": "/ben-weitzman-17-08-2023/static/media/16.02f6796a4b217cbdd262.png",
+    "static/media/15.png": "/ben-weitzman-17-08-2023/static/media/15.9aac7942a26db293440b.png",
     "index.html": "/ben-weitzman-17-08-2023/index.html",
-    "main.a9c291ef.js.map": "/ben-weitzman-17-08-2023/static/js/main.a9c291ef.js.map"
+    "main.80dad10a.js.map": "/ben-weitzman-17-08-2023/static/js/main.80dad10a.js.map"
   },
   "entrypoints": [
-    "static/js/main.a9c291ef.js"
+    "static/js/main.80dad10a.js"
   ]
 }
