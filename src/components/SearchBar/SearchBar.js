@@ -42,8 +42,8 @@ function SearchBar({ setCity }) {
   return (
     <Paper elevation={15} style={{
       // padding: '10px', 
-      marginTop: '20px', 
-      marginBottom: '20px', 
+      // marginTop: '10px', 
+      // marginBottom: '10px', 
       borderRadius: '15px', 
       backgroundColor: theme.palette.background.paper
     }}>

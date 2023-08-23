@@ -53,7 +53,7 @@ function App() {
       <Router >
       <div style={{ display: 'flex', flexDirection: isSmallScreen ? 'column' : 'row', height: '100vh' }}>  {/* Change flexDirection to column */}
           <SideBar darkMode={darkMode} setDarkMode={setDarkMode} />
-          <Container maxWidth="lg" style={{ display: 'flex', flexGrow: 1, width: '100%' }}>  {/* Ensure full width */}
+          <Container maxWidth="lg" style={{ display: 'flex', flexGrow: 1, width: '100%', marginLeft: isSmallScreen ? 0 : '-40px', marginTop: isSmallScreen ? '-10px' : 0 }}>  {/* Ensure full width */}
             <div style={{ flex: 1, overflow: 'auto', width: '100%' }}>  {/* Ensure full width */}
               <Routes>
                 <Route path="/favorites"

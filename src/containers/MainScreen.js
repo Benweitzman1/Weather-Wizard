@@ -5,7 +5,7 @@ import FiveDayForecast from '../components/FiveDayForecast/FiveDayForecast';
 import { searchCity, getCurrentConditions, get5DayForecast } from '../utils/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setWeatherForSelectedCity } from '../redux/slices/weatherSlice';
-import { Container, Typography} from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 function MainScreen({ setSnackbarOpen, setSnackbarMessage }) {
   const weatherData = useSelector(state => state.weather);

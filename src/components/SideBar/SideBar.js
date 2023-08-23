@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Box, Switch, Button, useMediaQuery } from '@mui/material';
+import { AppBar, IconButton, Box, Switch, Button, useMediaQuery } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -56,11 +56,13 @@ function SideBar({ darkMode, setDarkMode }) {
             style={{
               backgroundColor: '#333',
               flexDirection: isSmallScreen ? 'column' : 'row',
-              height: isSmallScreen ? menuOpen ? '150px' : '50px' : 'auto',
-              width: isSmallScreen ? 'auto' : menuOpen ? '180px' : '50px',
+              height: isSmallScreen ? (menuOpen ? '150px' : '50px') : 'auto',
+              width: isSmallScreen ? 'auto' : (menuOpen ? '180px' : '50px'),
               padding: '1rem 0',
               borderRadius: '15px',
               margin: '2%',
+              justifyContent: isSmallScreen ? "center" : '', 
+            //   alignItems: "center"
             }}
           >
             <Box
@@ -68,25 +70,25 @@ function SideBar({ darkMode, setDarkMode }) {
               flexDirection={isSmallScreen ? 'row' : 'column'}
               alignItems="center"
             //   height={'auto'}
-            //   width={'auto'}
-              height={isSmallScreen ? '100%' : 'auto'}
-              width={isSmallScreen ? '50px' : 'auto'}
-              paddingRight={isSmallScreen ? '1rem' : '0'}
+              height={isSmallScreen ? '18px' : 'auto'}
+              width={'auto'}
+            //   width={isSmallScreen ? 'auto' : 'auto'}
+              paddingLeft={isSmallScreen ? '1rem' : '0'}
             >
               <IconButton
               edge="start"
               color="inherit"
               aria-label="menu"
               onClick={() => setMenuOpen(!menuOpen)}
-              style={{ marginLeft: isSmallScreen ? '10px' : '0' }}
+            //   style={{ marginLeft: isSmallScreen ? '10px' : '', marginTop: isSmallScreen ? '-0' : '0' }}
               >  
-                <MenuIcon fontSize="3rem" />
+                <MenuIcon />
               </IconButton>
               <Switch
                 checked={darkMode}
                 onChange={() => setDarkMode(!darkMode)}
-                icon={darkMode ? <LightModeIcon fontSize="3rem" color="primary" /> : <DarkModeIcon fontSize="3rem" />}
-                checkedIcon={darkMode ? <LightModeIcon fontSize="3rem" color="primary" /> : <DarkModeIcon fontSize="3rem" />}
+                icon={darkMode ? <LightModeIcon fontSize="3rem" color="defualt" /> : <DarkModeIcon fontSize="30rem" />}
+                checkedIcon={darkMode ? <LightModeIcon fontSize="3rem" color="primary" /> : <DarkModeIcon fontSize="30rem" />}
               />
             </Box>
     

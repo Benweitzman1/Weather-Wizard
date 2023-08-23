@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Typography, Grid, Box, Paper, Button } from '@mui/material';
+import { Typography, Grid, Box, Paper, Button, Tooltip } from '@mui/material';
 import { blue, grey } from '@mui/material/colors';
 import { useTheme } from '@mui/material/styles';
 import { RiHeartAddLine, RiHeartFill } from "react-icons/ri";
@@ -53,20 +53,7 @@ function CurrentWeather({ city, getTemperature,isCelsius, setIsCelsius, fahrenhe
             <Typography variant="h5" style={{ color: blue[600] }}>{getTemperature(weatherData.currentWeather[0].Temperature.Imperial.Value)}</Typography>
             <Typography variant="h5" style={{ color: grey[600] }}>{weatherData.currentWeather[0].WeatherText}</Typography>
           </div>
-          <Box display="flex" flexDirection="column" alignItems="center" ml={3}>
-            {isFavorite(city.Key) ? 
-              <RiHeartFill fontSize="large" style={{ color: blue[500] }} /> : 
-              <RiHeartAddLine fontSize="large" style={{ color: blue[500] }} />
-            }
-            <Typography 
-              variant="caption" 
-              style={{ 
-                color: isFavorite(city.Key) ? grey[700] : 'transparent',
-                minHeight: '1rem'
-              }}>
-              In Favorites
-            </Typography>
-          </Box>
+          
         </Grid>
       <Grid item xs={12} md={4} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
                 <div style={{ width: '100%', marginBottom: '40px' }}>
@@ -86,21 +73,23 @@ function CurrentWeather({ city, getTemperature,isCelsius, setIsCelsius, fahrenhe
                     >
                       Toggle to {isCelsius ? "Fahrenheit" : "Celsius"}
                   </Button>
-                  <Button
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                      onClick={() => toggleFavorite(city.LocalizedName)}
-                      style={{ 
-                        textTransform: 'none', 
-                        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)'
-                      }}
-                      onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
-                      onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+                  <Tooltip title={isFavorite(city.Key) ? "Remove from Favorites" : "Add to Favorites"} enterDelay={500} leaveDelay={200}>
+                    <Box
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
+                        ml={3}
+                        onClick={() => toggleFavorite(city.LocalizedName)}
+                        onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
+                        onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
                     >
-                      {isFavorite(city.Key) ? "Remove from Favorites" : "Add to Favorites"}
-                  </Button>
+                        {isFavorite(city.Key) ? 
+                            <RiHeartFill fontSize="large" style={{ color: blue[500] }} /> : 
+                            <RiHeartAddLine fontSize="large" style={{ color: blue[500] }} />
+                        }
+                        
+                    </Box>
+                </Tooltip>
                 </div>
               </Grid>
             </Grid>
@@ -109,3 +98,4 @@ function CurrentWeather({ city, getTemperature,isCelsius, setIsCelsius, fahrenhe
 }
 
 export default CurrentWeather;
+

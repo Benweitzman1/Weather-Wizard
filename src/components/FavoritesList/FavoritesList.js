@@ -1,13 +1,16 @@
 import React from 'react';
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Paper, Typography, useMediaQuery } from '@mui/material';
 
 function FavoritesList({ favoriteCities, onSelectCity }) {
   const handleCityClick = (city) => {
     onSelectCity(city);
   };
 
+  const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('sm'));
+
+
   return (
-    <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap={2} marginTop={2}>
+    <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap={isSmallScreen ? 5 : 2} marginTop={isSmallScreen ? 2 : 5} marginLeft={isSmallScreen ? 0 : 3}>
       {favoriteCities.map(favorite => (
         <Paper 
           key={favorite.data.id}
@@ -24,7 +27,8 @@ function FavoritesList({ favoriteCities, onSelectCity }) {
             transition: 'background-color 0.3s ease',
             '&:hover': {
               backgroundColor: 'rgba(0, 0, 0, 0.04)'
-            }
+            },
+            borderRadius: '15px'
           }}
           onClick={() => handleCityClick(favorite)}
         >
