@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setWeatherForSelectedCity } from '../redux/slices/weatherSlice';
 import { Container, Typography } from '@mui/material';
 
-function MainScreen({ setSnackbarOpen, setSnackbarMessage }) {
+function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
   const weatherData = useSelector(state => state.weather);
   const dispatch = useDispatch();
   const [city, setCity] = useState(weatherData.currentWeather[0] ? weatherData.currentWeather[0] : null);
@@ -67,6 +67,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage }) {
             isCelsius={isCelsius}
             setIsCelsius={setIsCelsius}
             fahrenheitToCelsius={fahrenheitToCelsius}
+            darkMode={darkMode}
           />
           <FiveDayForecast
             getTemperature={getTemperature}

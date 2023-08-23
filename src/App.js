@@ -10,6 +10,7 @@ import { useMediaQuery } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import background from './images/background.jpg';
+import darkWeatherBackground from './images/darkWeatherBackground.jpeg';
 
 
 
@@ -51,7 +52,7 @@ function App() {
   const bgStyle = {
     width: '100vw',
     height: '100vh',
-    backgroundImage: `url(${background})`,
+    backgroundImage: darkMode ? `url(${darkWeatherBackground})` : `url(${background})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
@@ -62,9 +63,11 @@ function App() {
       {/* Use <Router basename={process.env.PUBLIC_URL}> for deployment and <Router> for development. */}
       <Router >
 
-
       <div style={{...bgStyle, display: 'flex', flexDirection: isSmallScreen ? 'column' : 'row', height: '100vh' }}>  {/* Change flexDirection to column */}
-          <SideBar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <SideBar
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+          />
           <Container maxWidth="lg" style={{ display: 'flex', flexGrow: 1, width: '100%', marginLeft: isSmallScreen ? 0 : '-40px', marginTop: isSmallScreen ? '-10px' : 0 }}>  {/* Ensure full width */}
             <div style={{ flex: 1, overflow: 'auto', width: '100%' }}>  {/* Ensure full width */}
               <Routes>
@@ -80,6 +83,7 @@ function App() {
                     <MainScreen
                       setSnackbarOpen={setSnackbarOpen}
                       setSnackbarMessage={setSnackbarMessage}
+                      darkMode={darkMode}
                     />
                   }
                 />

@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { RiHeartAddLine, RiHeartFill } from "react-icons/ri";
 import { addToFavorites, removeFromFavorites } from '../../redux/slices/favoritesSlice';
 
-function CurrentWeather({ city, getTemperature, isCelsius, setIsCelsius, fahrenheitToCelsius }) {
+function CurrentWeather({ city, getTemperature, isCelsius, setIsCelsius, fahrenheitToCelsius, darkMode }) {
     const weatherData = useSelector(state => state.weather);
     const favorites = useSelector(state => state.favorites);
     const dispatch = useDispatch();
@@ -70,7 +70,7 @@ function CurrentWeather({ city, getTemperature, isCelsius, setIsCelsius, fahrenh
             height: 40, // Matched with thumb height
             width: 60, // Increased width
             backgroundColor: theme.palette.grey[300],
-            backgroundImage: 'linear-gradient(45deg, #3A8DFF 30%, #86B9FF 90%)'
+            backgroundImage: darkMode ? 'linear-gradient(45deg, #001f3f 30%, #003366 90%)' : 'linear-gradient(45deg, #3A8DFF 30%, #86B9FF 90%)'
         }
     }));
 
@@ -113,19 +113,19 @@ function CurrentWeather({ city, getTemperature, isCelsius, setIsCelsius, fahrenh
                     </Tooltip>
 
                     <div>
-                        <Typography variant="h4" style={{ color: blue[800] }}>{city.LocalizedName}</Typography>
-                        <Typography variant="h5" style={{ color: blue[600], display: 'flex', alignItems: 'center' }}>
+                        <Typography variant="h4" style={{ color: (darkMode ? blue[100] : blue[800])}}>{city.LocalizedName}</Typography>
+                        <Typography variant="h5" style={{ color: (darkMode ? blue[150] : blue[600]), display: 'flex', alignItems: 'center' }}>
                             {getTemperature(weatherData.currentWeather[0].Temperature.Imperial.Value)}
                             <CustomSwitch
                                 checked={isCelsius}
                                 onChange={toggleTemperatureScale}
                                 color="primary"
                                 inputProps={{ 'aria-label': 'Temperature unit switch' }}
-                                icon={<span style={{ color: blue[800] }}>C</span>}
-                                checkedIcon={<span style={{ color: blue[800] }}>F</span>}
+                                icon={<span style={{ color: (darkMode ? blue[150] : blue[800]) }}>C</span>}
+                                checkedIcon={<span style={{ color: (darkMode ? blue[50] : blue[800]) }}>F</span>}
                             />
                         </Typography>
-                        <Typography variant="h5" style={{ color: grey[600] }}>{weatherData.currentWeather[0].WeatherText}</Typography>
+                        <Typography variant="h5" style={{ color: (darkMode ? grey[100] : grey[600]) }}>{weatherData.currentWeather[0].WeatherText}</Typography>
                     </div>
                 </Grid>
             </Grid>
