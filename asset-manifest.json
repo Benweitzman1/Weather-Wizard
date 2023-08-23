@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.js": "/ben-weitzman-17-08-2023/static/js/main.249b1bbf.js",
+    "main.js": "/ben-weitzman-17-08-2023/static/js/main.dcddd79b.js",
+    "static/media/background.jpg": "/ben-weitzman-17-08-2023/static/media/background.a42ba6f1c03ec5ce3ba7.jpg",
     "index.html": "/ben-weitzman-17-08-2023/index.html",
-    "main.249b1bbf.js.map": "/ben-weitzman-17-08-2023/static/js/main.249b1bbf.js.map"
+    "main.dcddd79b.js.map": "/ben-weitzman-17-08-2023/static/js/main.dcddd79b.js.map"
   },
   "entrypoints": [
-    "static/js/main.249b1bbf.js"
+    "static/js/main.dcddd79b.js"
   ]
 }
