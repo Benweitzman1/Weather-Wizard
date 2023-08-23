@@ -1,5 +1,5 @@
 import React from 'react';
-import FavoritesList from '../components/FavoritesList/FavoritesList';
+import FavoritesList from '../components/favoritesList/FavoritesList';
 import { setWeatherForSelectedCity } from '../redux/slices/weatherSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';

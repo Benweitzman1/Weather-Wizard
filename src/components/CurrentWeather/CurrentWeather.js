@@ -42,7 +42,7 @@ function CurrentWeather({ city, getTemperature, isCelsius, setIsCelsius, fahrenh
 
       const CustomSwitch = styled(Switch)(({ theme }) => ({
         width: 72, // Overall width of the switch component
-        height: 42, // Overall height
+        height: 45, // Overall height
         padding: 0,
         '& .MuiSwitch-switchBase': {
             padding: 4,
@@ -79,7 +79,8 @@ function CurrentWeather({ city, getTemperature, isCelsius, setIsCelsius, fahrenh
         <Paper elevation={15} style={{
             padding: '20px',
             marginTop: '10px',
-            backgroundColor: theme.palette.background.paper,
+            backgroundColor: 'transparent',
+            // backgroundColor: theme.palette.background.paper,
             borderRadius: '15px',
         }}>
             <Grid container spacing={2} alignItems="center">
@@ -95,8 +96,7 @@ function CurrentWeather({ city, getTemperature, isCelsius, setIsCelsius, fahrenh
                             onClick={toggleFavorite}
                             style={{
                                 transition: 'transform 0.2s ease, color 0.3s ease',
-                                cursor: 'pointer',
-                                // zIndex: 2
+                                cursor: 'pointer',                
                             }}
                             onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08)'}
                             onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}

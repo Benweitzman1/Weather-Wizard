@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import SearchBar from '../components/SearchBar/SearchBar';
-import CurrentWeather from '../components/CurrentWeather/CurrentWeather';
-import FiveDayForecast from '../components/FiveDayForecast/FiveDayForecast';
+import SearchBar from '../components/searchBar/SearchBar';
+import CurrentWeather from '../components/currentWeather/CurrentWeather';
+import FiveDayForecast from '../components/fiveDayForecast/FiveDayForecast';
 import { searchCity, getCurrentConditions, get5DayForecast } from '../utils/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setWeatherForSelectedCity } from '../redux/slices/weatherSlice';

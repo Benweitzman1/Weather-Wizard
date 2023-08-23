@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Header from './components/Header/Header';
-import SideBar from './components/SideBar/SideBar';
+import SideBar from './components/sideBar/SideBar';
 import MainScreen from './containers/MainScreen';
 import FavoritesScreen from './containers/FavoritesScreen';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -10,6 +9,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import background from './images/background.jpg';
+
 
 
 function App() {
@@ -47,11 +48,22 @@ function App() {
   
   const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('sm'));
 
+  const bgStyle = {
+    width: '100vw',
+    height: '100vh',
+    backgroundImage: `url(${background})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+  };
+
   return (
     <ThemeProvider theme={theme}>
       {/* Use <Router basename={process.env.PUBLIC_URL}> for deployment and <Router> for development. */}
       <Router >
-      <div style={{ display: 'flex', flexDirection: isSmallScreen ? 'column' : 'row', height: '100vh' }}>  {/* Change flexDirection to column */}
+
+
+      <div style={{...bgStyle, display: 'flex', flexDirection: isSmallScreen ? 'column' : 'row', height: '100vh' }}>  {/* Change flexDirection to column */}
           <SideBar darkMode={darkMode} setDarkMode={setDarkMode} />
           <Container maxWidth="lg" style={{ display: 'flex', flexGrow: 1, width: '100%', marginLeft: isSmallScreen ? 0 : '-40px', marginTop: isSmallScreen ? '-10px' : 0 }}>  {/* Ensure full width */}
             <div style={{ flex: 1, overflow: 'auto', width: '100%' }}>  {/* Ensure full width */}

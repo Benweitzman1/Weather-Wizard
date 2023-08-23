@@ -18,7 +18,8 @@ function FiveDayForecast({ getTemperature }) {
     <Paper elevation={15} style={{
       padding: '20px',
       marginTop: '10px',
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: 'transparent',
+      // backgroundColor: theme.palette.background.paper,
       borderRadius: '15px',
     }}>
       <Typography variant="h6" style={{ marginBottom: '10px' }}>Weekly</Typography>
