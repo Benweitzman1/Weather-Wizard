@@ -41,7 +41,7 @@ export const getCurrentConditions = async (
   }
 };
 
-export const get5DayForecast = async (
+export const getFourDayForecast = async (
   locationKey,
   setSnackbarOpen,
   setSnackbarMessage

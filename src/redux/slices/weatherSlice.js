@@ -27,25 +27,4 @@ const weatherSlice = createSlice({
 export const { setWeatherForSelectedCity } = weatherSlice.actions;
 export default weatherSlice.reducer;
 
-{
-  /* <Grid item xs={12} md={4}>
-                    {getIcon(city.WeatherIcon) && <img src={getIcon(city.WeatherIcon)} alt={`Selected ${userSelectedImageName}`} />}
-                </Grid> */
-}
-
-{
-  /* <Grid item xs={12} md={4}>
-          {getIcon("1") && <img src={getIcon("1")} alt={`Selected 1`} />}
-        </Grid> */
-}
-
-{
-  /* <Grid item xs={12} md={4}>
-          {getIcon(weatherData.currentWeather[0].WeatherIcon) && (
-            <img
-              src={getIcon(weatherData.currentWeather[0].WeatherIcon)}
-              alt={`Selected ${weatherData.currentWeather[0].WeatherIcon}`}
-            />
-          )}
-        </Grid> */
-}
+// i would like to do the 2-2-1 but you have an idea how i can take it to higher level? maybe to separte each square to separde component?

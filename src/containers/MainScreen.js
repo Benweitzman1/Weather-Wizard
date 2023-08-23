@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../components/searchBar/SearchBar";
-import CurrentWeather from "../components/CCCCCcurrentWeather/CurrentWeather";
-import FiveDayForecast from "../components/fiveDayForecast/FiveDayForecast";
+import CurrentWeather from "../components/currentWeather/CurrentWeather";
+import FourDayForecast from "../components/fourDayForecast/FourDayForecast";
 import {
   searchCity,
   getCurrentConditions,
-  get5DayForecast,
+  getFourDayForecast,
 } from "../utils/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setWeatherForSelectedCity } from "../redux/slices/weatherSlice";
@@ -19,6 +19,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
   );
   const [isCelsius, setIsCelsius] = useState(true);
   const deafultCity = "Tel-Aviv";
+  const iconContext = require.context("../images", false, /\.png$/);
 
   // Fetch initial weather data when component mounts or selected city changes
   useEffect(() => {
@@ -40,7 +41,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
           setSnackbarOpen,
           setSnackbarMessage
         );
-        const fiveDayForecast = await get5DayForecast(
+        const fourDayForecast = await getFourDayForecast(
           targetCity.Key,
           setSnackbarOpen,
           setSnackbarMessage
@@ -51,7 +52,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
           Key: targetCity.Key,
           WeatherText: conditions[0].WeatherText,
           TemperatureValue: conditions[0].Temperature.Imperial.Value,
-          Forecast: fiveDayForecast,
+          Forecast: fourDayForecast,
           WeatherIcon: conditions[0].WeatherIcon,
         };
         dispatch(setWeatherForSelectedCity(currCity));
@@ -75,6 +76,15 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
     return isCelsius ? `${fahrenheitToCelsius(value)}°C` : `${value}°F`;
   };
 
+  const getIcon = (iconNumber) => {
+    try {
+      return iconContext(`./${iconNumber}.png`);
+    } catch (error) {
+      console.error(`Icon "${iconNumber}.png" not found.`);
+      return null;
+    }
+  };
+
   return (
     <Container maxWidth="lg">
       <SearchBar setCity={setCity} />
@@ -90,8 +100,9 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
             setIsCelsius={setIsCelsius}
             fahrenheitToCelsius={fahrenheitToCelsius}
             darkMode={darkMode}
+            getIcon={getIcon}
           />
-          <FiveDayForecast getTemperature={getTemperature} />
+          <FourDayForecast getTemperature={getTemperature} getIcon={getIcon} />
         </>
       ) : (
         <Typography variant="h5">Loading...</Typography>

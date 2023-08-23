@@ -16,12 +16,11 @@ function CurrentWeather({
   setIsCelsius,
   fahrenheitToCelsius,
   darkMode,
+  getIcon,
 }) {
   const weatherData = useSelector((state) => state.weather);
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
-
-  const iconContext = require.context("../../images", false, /\.png$/);
 
   const isFavorite = (cityID) => {
     return favorites.some((favorite) => favorite.data.id === cityID);
@@ -88,15 +87,6 @@ function CurrentWeather({
         : "linear-gradient(45deg, #3A8DFF 30%, #86B9FF 90%)",
     },
   }));
-
-  const getIcon = (iconNumber) => {
-    try {
-      return iconContext(`./${iconNumber}.png`);
-    } catch (error) {
-      console.error(`Icon "${iconNumber}.png" not found.`);
-      return null;
-    }
-  };
 
   return (
     <Paper

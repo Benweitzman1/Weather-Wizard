@@ -49,7 +49,7 @@ function App() {
 
   const bgStyle = {
     width: "100vw",
-    height: "100vh",
+    height: "100%",
     backgroundImage: darkMode
       ? `url(${darkWeatherBackground})`
       : `url(${background})`,
