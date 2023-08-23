@@ -23,13 +23,21 @@ function FiveDayForecast({ getTemperature }) {
     }}>
       <Typography variant="h6" style={{ marginBottom: '10px' }}>Weekly</Typography>
       <Grid container spacing={0} justifyContent="space-between">
-        {weatherData.forecast.DailyForecasts.map((day, index) => (
-          <Grid item xs key={index} style={{ textAlign: 'center', border: '1px solid black', padding: '10px', margin: '0 5px' }}>
-            <Typography variant="body1">{index === 0 ? 'Today' : getDayOfWeek(day.Date)}</Typography>
-            <Typography variant="body1">{getTemperature(day.Temperature.Maximum.Value)}</Typography>
-          </Grid>
-        ))}
-      </Grid>
+  {weatherData.forecast.DailyForecasts.map((day, index) => (
+    <Grid 
+      item xs 
+      key={index} 
+      style={{ 
+        textAlign: 'center',
+        padding: '10px',
+        marginRight: index !== weatherData.forecast.DailyForecasts.length - 1 ? '1px' : '0',
+        borderRight: index !== weatherData.forecast.DailyForecasts.length - 1 ? '1px solid black' : 'none' 
+      }}>
+      <Typography variant="body1">{index === 0 ? 'Today' : getDayOfWeek(day.Date)}</Typography>
+      <Typography variant="body1">{getTemperature(day.Temperature.Maximum.Value)}</Typography>
+    </Grid>
+  ))}
+</Grid>
     </Paper>
   );
 }

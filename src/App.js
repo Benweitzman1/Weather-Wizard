@@ -49,7 +49,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <Router basename={process.env.PUBLIC_URL}> */}
+      {/* Use <Router basename={process.env.PUBLIC_URL}> for deployment and <Router> for development. */}
       <Router >
       <div style={{ display: 'flex', flexDirection: isSmallScreen ? 'column' : 'row', height: '100vh' }}>  {/* Change flexDirection to column */}
           <SideBar darkMode={darkMode} setDarkMode={setDarkMode} />
