@@ -33,6 +33,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
   // Fetch initial weather data when component mounts or selected city changes
   useEffect(() => {
     const fetchWeatherData = async () => {
+      dispatch(setWeatherForSelectedCity({}));
       try {
         let targetCity = city;
         if (!city) {

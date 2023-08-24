@@ -45,7 +45,7 @@ function SportsActivities({ darkMode }) {
       <Grid container spacing={2} justifyContent="space-between">
         {Object.entries(weatherData.sportsActivities).map(
           ([, sportData], index) => (
-            <Grid item key={index}>
+            <Grid item xs={12} md={4} key={index}>
               <Typography variant="body1" style={sportStyles}>
                 {sportData.Name.split(" ")[0]}: {sportData.Category}
               </Typography>

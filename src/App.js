@@ -54,6 +54,8 @@ function App() {
       ? `url(${darkWeatherBackground})`
       : `url(${background})`,
     backgroundSize: "cover",
+    // backgroundRepeat: "repeat",
+    // backgroundColor: "#2a2a2a",
     backgroundPosition: "center center",
   };
 
@@ -66,6 +68,7 @@ function App() {
             ...bgStyle,
             display: "flex",
             flexDirection: isSmallScreen ? "column" : "row",
+            height: isSmallScreen ? "" : "100vh",
           }}
         >
           {" "}
