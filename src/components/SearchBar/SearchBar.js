@@ -42,9 +42,6 @@ function SearchBar({ setCity }) {
     <Paper
       elevation={15}
       style={{
-        // padding: '10px',
-        // marginTop: '10px',
-        // marginBottom: '10px',
         borderRadius: "15px",
         backgroundColor: theme.palette.background.paper,
       }}
@@ -60,13 +57,6 @@ function SearchBar({ setCity }) {
             borderRadius: "15px",
             boxShadow: "none",
           }}
-          // InputProps={{  // Apply styles to the input inside the TextField
-          //   disableUnderline: true,  // Removes the underline
-          //   style: {
-          //     borderRadius: '15px',
-          //     background: 'transparent',
-          //   }
-          // }}
         />
 
         {results.length > 0 && (

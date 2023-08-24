@@ -24,7 +24,6 @@ const DayForecast = ({ day, getTemperature, getIcon }) => {
           {getIcon(day.Day.Icon) && (
             <img
               src={getIcon(day.Day.Icon)}
-              // alt={`Weather condition for ${city.LocalizedName}`}
               style={{ width: "80px", height: "48px" }}
             />
           )}

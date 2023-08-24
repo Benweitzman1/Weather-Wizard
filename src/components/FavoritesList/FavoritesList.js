@@ -1,13 +1,10 @@
 import React from "react";
-import { Box, Paper, Typography, useMediaQuery } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 
-function FavoritesList({ favoriteCities, onSelectCity }) {
+function FavoritesList({ favoriteCities, onSelectCity, isSmallScreen }) {
   const handleCityClick = (city) => {
-    console.log({ city });
     onSelectCity(city);
   };
-
-  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   return (
     <Box
@@ -17,6 +14,7 @@ function FavoritesList({ favoriteCities, onSelectCity }) {
       gap={isSmallScreen ? 5 : 2}
       marginTop={isSmallScreen ? 2 : 5}
       marginLeft={isSmallScreen ? 0 : 3}
+      height="100%"
     >
       {favoriteCities.map((favorite) => (
         <Paper

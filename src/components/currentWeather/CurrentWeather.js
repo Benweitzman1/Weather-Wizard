@@ -17,6 +17,7 @@ function CurrentWeather({
   fahrenheitToCelsius,
   darkMode,
   getIcon,
+  isSmallScreen,
 }) {
   const weatherData = useSelector((state) => state.weather);
   const favorites = useSelector((state) => state.favorites);
@@ -47,10 +48,6 @@ function CurrentWeather({
       },
     };
 
-    console.log({ city });
-    console.log({ weatherData });
-    console.log({ cityData });
-
     if (isFavorite(cityData.data.id)) {
       dispatch(removeFromFavorites(cityData));
     } else {
@@ -59,13 +56,13 @@ function CurrentWeather({
   };
 
   const CustomSwitch = styled(Switch)(({ theme }) => ({
-    width: 72, // Overall width of the switch component
-    height: 45, // Overall height
+    width: 72,
+    height: 45,
     padding: 0,
     "& .MuiSwitch-switchBase": {
       padding: 4,
       "&.Mui-checked": {
-        transform: "translateX(30px)", // Adjusted to accommodate the larger thumb
+        transform: "translateX(30px)",
       },
       "&.Mui-checked + .MuiSwitch-track": {
         backgroundColor: theme.palette.primary.main,
@@ -80,13 +77,13 @@ function CurrentWeather({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      color: blue[800], // Making the color consistent for both checked and unchecked state
+      color: blue[800],
       transition: "color 0.3s ease",
     },
     "& .MuiSwitch-track": {
-      borderRadius: 20, // Adjusted for rounded corners
-      height: 40, // Matched with thumb height
-      width: 60, // Increased width
+      borderRadius: 20,
+      height: 40,
+      width: 60,
       backgroundColor: theme.palette.grey[300],
       backgroundImage: darkMode
         ? "linear-gradient(45deg, #001f3f 30%, #003366 90%)"
@@ -101,7 +98,6 @@ function CurrentWeather({
         padding: "20px",
         marginTop: "20px",
         backgroundColor: "transparent",
-        // backgroundColor: theme.palette.background.paper,
         borderRadius: "15px",
       }}
     >
@@ -116,8 +112,8 @@ function CurrentWeather({
           >
             <Box
               position="absolute"
-              top={10}
-              right={10}
+              top={isSmallScreen ? 10 : 40}
+              right={isSmallScreen ? 10 : -250}
               display="flex"
               flexDirection="column"
               alignItems="center"
@@ -134,15 +130,25 @@ function CurrentWeather({
               {isFavorite(city.Key) ? (
                 <RiHeartFill
                   fontSize="4rem"
-                  style={{ color: blue[500], transition: "color 0.3s ease" }}
-                  onMouseOver={(e) => (e.currentTarget.style.color = blue[700])}
+                  style={{
+                    color: darkMode ? blue[300] : blue[800],
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.color = blue[1000])
+                  }
                   onMouseOut={(e) => (e.currentTarget.style.color = blue[500])}
                 />
               ) : (
                 <RiHeartAddLine
                   fontSize="4rem"
-                  style={{ color: blue[500], transition: "color 0.3s ease" }}
-                  onMouseOver={(e) => (e.currentTarget.style.color = blue[700])}
+                  style={{
+                    color: darkMode ? blue[300] : blue[800],
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.color = blue[1000])
+                  }
                   onMouseOut={(e) => (e.currentTarget.style.color = blue[500])}
                 />
               )}
@@ -187,17 +193,19 @@ function CurrentWeather({
                 }
               />
             </Typography>
-            <Typography
-              variant="h5"
-              style={{
-                color: colorTexts,
-                textAlign: "center",
-              }}
-            >
-              {weatherData.currentWeather[0].WeatherText}
-            </Typography>
+            <Grid item xs={12} md={4} lg={4} style={{ textAlign: "center" }}>
+              <Typography
+                variant="h5"
+                style={{
+                  color: colorTexts,
+                  textAlign: "center",
+                }}
+              >
+                {weatherData.currentWeather[0].WeatherText}
+              </Typography>
+            </Grid>
           </div>
-          <Grid item xs={12} md={4} style={{ textAlign: "center" }}>
+          <Grid item xs={12} md={4} lg={4} style={{ textAlign: "center" }}>
             {getIcon(weatherData.currentWeather[0].WeatherIcon) && (
               <img
                 src={getIcon(weatherData.currentWeather[0].WeatherIcon)}

@@ -4,12 +4,11 @@ import { setWeatherForSelectedCity } from "../redux/slices/weatherSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-const FavoritesScreen = ({ favoriteCities }) => {
+const FavoritesScreen = ({ favoriteCities, isSmallScreen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSelectedCity = (selectedCity) => {
-    console.log({ selectedCity });
     const currCity = {
       LocalizedName: selectedCity.currentWeather.LocalizedName,
       Key: selectedCity.currentWeather.Key,
@@ -19,20 +18,23 @@ const FavoritesScreen = ({ favoriteCities }) => {
       WeatherIcon: selectedCity.currentWeather.WeatherIcon,
       SportsActivities: selectedCity.SportsActivities,
     };
-    console.log({ currCity });
     dispatch(setWeatherForSelectedCity(currCity));
     navigate("/");
   };
 
-  console.log({ favoriteCities });
   return (
     <div
       className="favorites-screen"
-      style={{ marginBottom: "10px", marginRight: "10px" }}
+      style={{
+        marginBottom: "10px",
+        marginRight: "10px",
+        height: "100%",
+      }}
     >
       <FavoritesList
         favoriteCities={favoriteCities}
         onSelectCity={handleSelectedCity}
+        isSmallScreen={isSmallScreen}
       />
     </div>
   );

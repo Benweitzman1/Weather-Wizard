@@ -50,19 +50,18 @@ function App() {
   const bgStyle = {
     width: "100vw",
     height: "100%",
+    minHeight: "100vh",
     backgroundImage: darkMode
       ? `url(${darkWeatherBackground})`
       : `url(${background})`,
     backgroundSize: "cover",
-    // backgroundRepeat: "repeat",
-    // backgroundColor: "#2a2a2a",
     backgroundPosition: "center center",
   };
 
   return (
     <ThemeProvider theme={theme}>
       {/* Use <Router basename={process.env.PUBLIC_URL}> for deployment and <Router> for development. */}
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div
           style={{
             ...bgStyle,
@@ -73,7 +72,11 @@ function App() {
         >
           {" "}
           {/* Change flexDirection to column */}
-          <SideBar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <SideBar
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+            isSmallScreen={isSmallScreen}
+          />
           <Container
             maxWidth="lg"
             style={{
@@ -92,7 +95,12 @@ function App() {
               <Routes>
                 <Route
                   path="/favorites"
-                  element={<FavoritesScreen favoriteCities={favoriteCities} />}
+                  element={
+                    <FavoritesScreen
+                      favoriteCities={favoriteCities}
+                      isSmallScreen={isSmallScreen}
+                    />
+                  }
                 />
                 <Route
                   path="/"
@@ -101,6 +109,7 @@ function App() {
                       setSnackbarOpen={setSnackbarOpen}
                       setSnackbarMessage={setSnackbarMessage}
                       darkMode={darkMode}
+                      isSmallScreen={isSmallScreen}
                     />
                   }
                 />

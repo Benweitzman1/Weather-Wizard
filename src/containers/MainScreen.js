@@ -13,7 +13,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setWeatherForSelectedCity } from "../redux/slices/weatherSlice";
 import { Container, Typography } from "@mui/material";
 
-function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
+function MainScreen({
+  setSnackbarOpen,
+  setSnackbarMessage,
+  darkMode,
+  isSmallScreen,
+}) {
   const weatherData = useSelector((state) => state.weather);
   const dispatch = useDispatch();
   const [city, setCity] = useState(
@@ -68,7 +73,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
           WeatherIcon: conditions[0].WeatherIcon,
           SportsActivities: SportsActivities,
         };
-        console.log({ currCity });
+
         dispatch(setWeatherForSelectedCity(currCity));
       } catch (error) {
         console.error(error);
@@ -140,6 +145,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
             fahrenheitToCelsius={fahrenheitToCelsius}
             darkMode={darkMode}
             getIcon={getIcon}
+            isSmallScreen={isSmallScreen}
           />
           <SportsActivities darkMode={darkMode} />
           <FourDayForecast
