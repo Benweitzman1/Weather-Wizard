@@ -49,12 +49,11 @@ function App() {
 
   const bgStyle = {
     width: "100vw",
-    height: "100vh",
+    height: "100%",
     backgroundImage: darkMode
       ? `url(${darkWeatherBackground})`
       : `url(${background})`,
     backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
   };
 
@@ -67,7 +66,6 @@ function App() {
             ...bgStyle,
             display: "flex",
             flexDirection: isSmallScreen ? "column" : "row",
-            height: "100vh",
           }}
         >
           {" "}

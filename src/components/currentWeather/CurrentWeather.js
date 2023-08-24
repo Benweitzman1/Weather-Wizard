@@ -36,16 +36,20 @@ function CurrentWeather({
       currentWeather: weatherData.currentWeather[0],
       forecast: weatherData.forecast,
       data: {
-        cityName: city.LocalizedName,
-        id: city.Key,
+        cityName: weatherData.currentWeather[0].LocalizedName,
+        id: weatherData.currentWeather[0].Key,
         WeatherText: weatherData.currentWeather[0].WeatherText,
         TemperatureValue: fahrenheitToCelsius(
           weatherData.currentWeather[0].Temperature.Imperial.Value
         ),
         WeatherIcon: weatherData.currentWeather[0].WeatherIcon,
-        SportsActivities: weatherData.SportsActivities,
+        SportsActivities: weatherData.sportsActivities,
       },
     };
+
+    console.log({ city });
+    console.log({ weatherData });
+    console.log({ cityData });
 
     if (isFavorite(cityData.data.id)) {
       dispatch(removeFromFavorites(cityData));

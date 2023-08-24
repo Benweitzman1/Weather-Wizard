@@ -3,6 +3,7 @@ import { Box, Paper, Typography, useMediaQuery } from "@mui/material";
 
 function FavoritesList({ favoriteCities, onSelectCity }) {
   const handleCityClick = (city) => {
+    console.log({ city });
     onSelectCity(city);
   };
 
@@ -11,7 +12,7 @@ function FavoritesList({ favoriteCities, onSelectCity }) {
   return (
     <Box
       display="flex"
-      justifyContent="space-between"
+      justifyContent="flex-start"
       flexWrap="wrap"
       gap={isSmallScreen ? 5 : 2}
       marginTop={isSmallScreen ? 2 : 5}
@@ -20,7 +21,7 @@ function FavoritesList({ favoriteCities, onSelectCity }) {
       {favoriteCities.map((favorite) => (
         <Paper
           key={favorite.data.id}
-          elevation={2}
+          elevation={3}
           sx={{
             width: 150,
             height: 150,
@@ -30,9 +31,13 @@ function FavoritesList({ favoriteCities, onSelectCity }) {
             justifyContent: "center",
             padding: 2,
             cursor: "pointer",
-            transition: "background-color 0.3s ease",
+            backgroundColor: "rgba(50,104,255,1)",
+            boxShadow: "0px 8px 20px 0px rgba(0, 0, 0, 0.12)",
+            transition: "transform 0.3s ease, box-shadow 0.3s ease",
             "&:hover": {
-              backgroundColor: "rgba(0, 0, 0, 0.04)",
+              transform: "scale(1.05)",
+              boxShadow: "0px 12px 24px 0px rgba(0, 0, 0, 0.15)",
+              backgroundColor: "rgba(0, 0, 0, 0.24)",
             },
             borderRadius: "15px",
           }}

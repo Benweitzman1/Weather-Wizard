@@ -29,10 +29,6 @@ function SportsActivities({ darkMode }) {
     textShadow: darkMode ? "1px 1px 3px rgba(0, 0, 0, 0.1)" : "none",
   };
 
-  console.log("11111111111111111111111");
-  console.log(weatherData);
-  console.log("11111111111111111111111");
-
   if (
     !weatherData.sportsActivities ||
     !Object.keys(weatherData.sportsActivities).length

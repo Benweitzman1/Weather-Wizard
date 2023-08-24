@@ -56,9 +56,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
           setSnackbarMessage
         );
 
-        console.log({ targetCity });
         const SportsActivities = await fetchSportsData(targetCity.Key);
-        console.log({ SportsActivities });
 
         const currCity = {
           LocalizedName: targetCity.LocalizedName,
@@ -69,6 +67,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
           WeatherIcon: conditions[0].WeatherIcon,
           SportsActivities: SportsActivities,
         };
+        console.log({ currCity });
         dispatch(setWeatherForSelectedCity(currCity));
       } catch (error) {
         console.error(error);

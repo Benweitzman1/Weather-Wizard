@@ -9,6 +9,7 @@ const FavoritesScreen = ({ favoriteCities }) => {
   const navigate = useNavigate();
 
   const handleSelectedCity = (selectedCity) => {
+    console.log({ selectedCity });
     const currCity = {
       LocalizedName: selectedCity.currentWeather.LocalizedName,
       Key: selectedCity.currentWeather.Key,
@@ -18,12 +19,17 @@ const FavoritesScreen = ({ favoriteCities }) => {
       WeatherIcon: selectedCity.currentWeather.WeatherIcon,
       SportsActivities: selectedCity.SportsActivities,
     };
+    console.log({ currCity });
     dispatch(setWeatherForSelectedCity(currCity));
     navigate("/");
   };
 
+  console.log({ favoriteCities });
   return (
-    <div className="favorites-screen">
+    <div
+      className="favorites-screen"
+      style={{ marginBottom: "10px", marginRight: "10px" }}
+    >
       <FavoritesList
         favoriteCities={favoriteCities}
         onSelectCity={handleSelectedCity}

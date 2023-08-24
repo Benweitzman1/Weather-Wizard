@@ -9,20 +9,23 @@ const DayForecast = ({ day, getTemperature, getIcon }) => {
   };
 
   return (
-    <Grid item xs={6} sm={3} style={gridItemStyles}>
-      <Card elevation={3} style={cardStyles}>
+    <Grid item xs={6} sm={6} md={3} style={gridItemStyles}>
+      <Card elevation={3} sx={cardStyles}>
         <Typography variant="h6" style={typographyDayStyles}>
           {getDayOfWeek(day.Date)}
         </Typography>
         <Typography variant="body1" style={typographyTempStyles}>
           {getTemperature(day.Temperature.Maximum.Value)}
         </Typography>
-        <Grid item xs={12} md={4} style={{ textAlign: "center" }}>
+        <Typography variant="body1" style={typographyTempStyles}>
+          {day.Day.IconPhrase}
+        </Typography>
+        <Grid item xs={12} style={{ marginTop: "5px", textAlign: "center" }}>
           {getIcon(day.Day.Icon) && (
             <img
               src={getIcon(day.Day.Icon)}
               // alt={`Weather condition for ${city.LocalizedName}`}
-              style={{ width: "200px", height: "120px" }}
+              style={{ width: "80px", height: "48px" }}
             />
           )}
         </Grid>
@@ -44,13 +47,14 @@ const cardStyles = {
   padding: "15px",
   borderRadius: "15px",
   background:
-    "linear-gradient(to right, rgba(7,27,82,1) 0%, rgba(0,104,255,1) 100%)",
+    "linear-gradient(to right, rgba(14,50,152,1) 0%, rgba(0,204,255,1) 100%)",
   color: "white",
   cursor: "pointer",
-  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  transition: "transform 0.3s ease, box-shadow 0.3s ease",
   ":hover": {
     transform: "scale(1.05)",
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "rgba(0, 0, 0, 0.24)",
   },
 };
 
