@@ -71,7 +71,6 @@ function App() {
           }}
         >
           {" "}
-          {/* Change flexDirection to column */}
           <SideBar
             darkMode={darkMode}
             setDarkMode={setDarkMode}
@@ -88,10 +87,8 @@ function App() {
             }}
           >
             {" "}
-            {/* Ensure full width */}
             <div style={{ flex: 1, overflow: "auto", width: "100%" }}>
               {" "}
-              {/* Ensure full width */}
               <Routes>
                 <Route
                   path="/favorites"

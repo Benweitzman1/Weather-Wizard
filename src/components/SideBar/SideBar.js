@@ -1,19 +1,10 @@
 import React, { useState } from "react";
-import {
-  AppBar,
-  IconButton,
-  Box,
-  Switch,
-  Button,
-  useMediaQuery,
-} from "@mui/material";
+import { AppBar, IconButton, Box, Switch, Button } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -89,16 +80,32 @@ function SideBar({ darkMode, setDarkMode, isSmallScreen }) {
             onChange={() => setDarkMode(!darkMode)}
             icon={
               darkMode ? (
-                <LightModeIcon fontSize="3rem" color="defualt" />
+                <LightModeIcon
+                  fontSize="3rem"
+                  color="primary"
+                  style={{ marginTop: "1px" }}
+                />
               ) : (
-                <DarkModeIcon fontSize="30rem" />
+                <DarkModeIcon
+                  fontSize="3rem"
+                  color="primary"
+                  style={{ marginTop: "1px" }}
+                />
               )
             }
             checkedIcon={
               darkMode ? (
-                <LightModeIcon fontSize="3rem" color="primary" />
+                <LightModeIcon
+                  fontSize="3rem"
+                  color="primary"
+                  style={{ marginTop: "1px" }}
+                />
               ) : (
-                <DarkModeIcon fontSize="30rem" />
+                <DarkModeIcon
+                  fontSize="30rem"
+                  color="primary"
+                  style={{ marginTop: "1px" }}
+                />
               )
             }
           />
@@ -109,11 +116,8 @@ function SideBar({ darkMode, setDarkMode, isSmallScreen }) {
             display="flex"
             flexDirection={isSmallScreen ? "row" : "column"}
             justifyContent="flex-start"
-            // justifyContent="space-between"
             alignItems="center"
             height="100%"
-            //   paddingBottom={isSmallScreen ? '6rem' : '0'}
-            //   marginTop={isSmallScreen ? '10px' : '0'}
           >
             {buttonComponent("/", <HomeIcon fontSize="3rem" />, "Home")}
             {buttonComponent(
@@ -121,12 +125,6 @@ function SideBar({ darkMode, setDarkMode, isSmallScreen }) {
               <FavoriteIcon fontSize="3rem" />,
               "Favorites"
             )}
-            {/* {buttonComponent("/map", <MapIcon fontSize="3rem" />, "Map")}
-            {buttonComponent(
-              "/settings",
-              <SettingsIcon fontSize="3rem" />,
-              "Settings"
-            )} */}
           </Box>
         )}
       </AppBar>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Typography, Grid, Box, Paper, Tooltip, Switch } from "@mui/material";
-import { blue, grey } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import { RiHeartAddLine, RiHeartFill } from "react-icons/ri";
 import {

@@ -11,7 +11,8 @@ import {
 } from "../utils/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setWeatherForSelectedCity } from "../redux/slices/weatherSlice";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function MainScreen({
   setSnackbarOpen,
@@ -155,7 +156,19 @@ function MainScreen({
           />
         </>
       ) : (
-        <Typography variant="h5">Loading...</Typography>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "60vh",
+          }}
+        >
+          <CircularProgress
+            size={80}
+            style={{ color: darkMode ? "#fff" : "#000" }}
+          />
+        </div>
       )}
     </Container>
   );

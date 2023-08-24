@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Typography, Grid, Paper } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { blue, grey } from "@mui/material/colors";
 
 function SportsActivities({ darkMode }) {
   const weatherData = useSelector((state) => state.weather);
 
-  const colorTexts = darkMode ? blue[100] : blue[950];
+  const colorTexts = darkMode ? grey[900] : blue[950];
 
   const paperStyles = {
     padding: "20px",
@@ -33,7 +33,6 @@ function SportsActivities({ darkMode }) {
     !weatherData.sportsActivities ||
     !Object.keys(weatherData.sportsActivities).length
   ) {
-    // No sports activities available
     return null; // Render nothing if there are no sports activities
   }
 
