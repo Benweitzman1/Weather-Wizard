@@ -43,7 +43,7 @@ function CurrentWeather({
           weatherData.currentWeather[0].Temperature.Imperial.Value
         ),
         WeatherIcon: weatherData.currentWeather[0].WeatherIcon,
-        SportsActivities: weatherData[0].SportsActivities,
+        SportsActivities: weatherData.SportsActivities,
       },
     };
 
@@ -145,7 +145,10 @@ function CurrentWeather({
             </Box>
           </Tooltip>
           <div>
-            <Typography variant="h6" style={{ color: colorTexts }}>
+            <Typography
+              variant="h6"
+              style={{ marginBottom: "15px", color: colorTexts }}
+            >
               Today
             </Typography>
             <Typography variant="h3" style={{ color: colorTexts }}>

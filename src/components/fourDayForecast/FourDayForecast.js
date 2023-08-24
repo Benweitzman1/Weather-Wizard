@@ -3,12 +3,27 @@ import DayForecast from "../dayForecast/DayForecast";
 import { useSelector } from "react-redux";
 import { Typography, Grid, Paper } from "@mui/material";
 
-function FourDayForecast({ getTemperature, getIcon, iconContext }) {
+function FourDayForecast({ getTemperature, getIcon, darkMode }) {
   const weatherData = useSelector((state) => state.weather);
+
+  const titleStyles = {
+    marginBottom: "10px",
+    fontWeight: 600,
+    letterSpacing: "1px",
+    textShadow: darkMode ? "2px 2px 4px rgba(0, 0, 0, 0.2)" : "none",
+  };
+
+  const paperStyles = {
+    padding: "20px",
+    marginTop: "20px",
+    marginBottom: "20px",
+    backgroundColor: "transparent",
+    borderRadius: "15px",
+  };
 
   return (
     <Paper elevation={15} style={paperStyles}>
-      <Typography variant="h6" style={{ marginBottom: "10px" }}>
+      <Typography variant="h5" style={{ marginBottom: "10px", ...titleStyles }}>
         Weekly
       </Typography>
       <Grid container spacing={2} justifyContent="space-between">
@@ -18,20 +33,11 @@ function FourDayForecast({ getTemperature, getIcon, iconContext }) {
             day={day}
             getTemperature={getTemperature}
             getIcon={getIcon}
-            iconContext={iconContext}
           />
         ))}
       </Grid>
     </Paper>
   );
 }
-
-const paperStyles = {
-  padding: "20px",
-  marginTop: "20px",
-  marginBottom: "20px",
-  backgroundColor: "transparent",
-  borderRadius: "15px",
-};
 
 export default FourDayForecast;

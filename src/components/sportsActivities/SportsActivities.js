@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Typography, Grid, Paper } from "@mui/material";
-import { blue, grey } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
 
 function SportsActivities({ darkMode }) {
   const weatherData = useSelector((state) => state.weather);
@@ -15,9 +15,24 @@ function SportsActivities({ darkMode }) {
     borderRadius: "15px",
   };
 
+  const titleStyles = {
+    marginBottom: "10px",
+    fontWeight: 600,
+    letterSpacing: "1px",
+    textShadow: darkMode ? "2px 2px 4px rgba(0, 0, 0, 0.2)" : "none",
+  };
+
+  const sportStyles = {
+    color: colorTexts,
+    fontWeight: 500,
+    letterSpacing: "0.8px",
+    textShadow: darkMode ? "1px 1px 3px rgba(0, 0, 0, 0.1)" : "none",
+  };
+
   console.log("11111111111111111111111");
   console.log(weatherData);
   console.log("11111111111111111111111");
+
   if (
     !weatherData.sportsActivities ||
     !Object.keys(weatherData.sportsActivities).length
@@ -28,15 +43,15 @@ function SportsActivities({ darkMode }) {
 
   return (
     <Paper elevation={15} style={paperStyles}>
-      <Typography variant="h6" style={{ marginBottom: "10px" }}>
+      <Typography variant="h5" style={titleStyles}>
         Sports Activities
       </Typography>
       <Grid container spacing={2} justifyContent="space-between">
         {Object.entries(weatherData.sportsActivities).map(
-          ([sportName, sportData], index) => (
+          ([, sportData], index) => (
             <Grid item key={index}>
-              <Typography style={{ color: colorTexts }}>
-                {sportName}: {sportData.Category}
+              <Typography variant="body1" style={sportStyles}>
+                {sportData.Name.split(" ")[0]}: {sportData.Category}
               </Typography>
             </Grid>
           )

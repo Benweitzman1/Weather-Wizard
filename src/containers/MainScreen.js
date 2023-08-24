@@ -142,7 +142,11 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
             getIcon={getIcon}
           />
           <SportsActivities darkMode={darkMode} />
-          <FourDayForecast getTemperature={getTemperature} getIcon={getIcon} />
+          <FourDayForecast
+            getTemperature={getTemperature}
+            getIcon={getIcon}
+            darkMode={darkMode}
+          />
         </>
       ) : (
         <Typography variant="h5">Loading...</Typography>
