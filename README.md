@@ -4,8 +4,8 @@
 
 🚀 **Live Application**: [Weather Wizard](https://benweitzman1.github.io/ben-weitzman-17-08-2023/)
 
-![compScreenshot](images/compScreenshot.png)
-![mobileScreenshot](images/mobileScreenshot.png)
+![compScreenshot](src/images/compScreenshot.png)
+![mobileScreenshot](src/images/mobileScreenshot.png)
 
 ## Table of Contents
 
