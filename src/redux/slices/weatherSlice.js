@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   currentWeather: [],
   forecast: {},
+  sportsActivities: {},
 };
 
 const weatherSlice = createSlice({
@@ -20,11 +21,10 @@ const weatherSlice = createSlice({
         },
       ];
       state.forecast = action.payload.Forecast;
+      state.sportsActivities = action.payload.SportsActivities;
     },
   },
 });
 
 export const { setWeatherForSelectedCity } = weatherSlice.actions;
 export default weatherSlice.reducer;
-
-// i would like to do the 2-2-1 but you have an idea how i can take it to higher level? maybe to separte each square to separde component?

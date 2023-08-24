@@ -16,6 +16,7 @@ const FavoritesScreen = ({ favoriteCities }) => {
       TemperatureValue: selectedCity.currentWeather.Temperature,
       Forecast: selectedCity.forecast,
       WeatherIcon: selectedCity.currentWeather.WeatherIcon,
+      SportsActivities: selectedCity.SportsActivities,
     };
     dispatch(setWeatherForSelectedCity(currCity));
     navigate("/");

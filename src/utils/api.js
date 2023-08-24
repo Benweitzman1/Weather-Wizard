@@ -59,7 +59,7 @@ export const getFourDayForecast = async (
   }
 };
 
-export const getCurrentConditionsForSportsActivity = async (
+export const getCurrentConditionsForSportsActivities = async (
   locationKey,
   sportId,
   setSnackbarOpen,

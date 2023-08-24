@@ -21,6 +21,7 @@ function CurrentWeather({
   const weatherData = useSelector((state) => state.weather);
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
+  const colorTexts = darkMode ? blue[100] : blue[950];
 
   const isFavorite = (cityID) => {
     return favorites.some((favorite) => favorite.data.id === cityID);
@@ -42,6 +43,7 @@ function CurrentWeather({
           weatherData.currentWeather[0].Temperature.Imperial.Value
         ),
         WeatherIcon: weatherData.currentWeather[0].WeatherIcon,
+        SportsActivities: weatherData[0].SportsActivities,
       },
     };
 
@@ -93,7 +95,7 @@ function CurrentWeather({
       elevation={15}
       style={{
         padding: "20px",
-        marginTop: "10px",
+        marginTop: "20px",
         backgroundColor: "transparent",
         // backgroundColor: theme.palette.background.paper,
         borderRadius: "15px",
@@ -142,22 +144,22 @@ function CurrentWeather({
               )}
             </Box>
           </Tooltip>
-
           <div>
-            <Typography
-              variant="h4"
-              style={{ color: darkMode ? blue[100] : blue[800] }}
-            >
+            <Typography variant="h6" style={{ color: colorTexts }}>
+              Today
+            </Typography>
+            <Typography variant="h3" style={{ color: colorTexts }}>
               {city.LocalizedName}
             </Typography>
             <Typography
               variant="h5"
               style={{
-                color: darkMode ? blue[150] : blue[600],
+                color: colorTexts,
                 display: "flex",
                 alignItems: "center",
               }}
             >
+              Temperature:{" "}
               {getTemperature(
                 weatherData.currentWeather[0].Temperature.Imperial.Value
               )}
@@ -181,7 +183,7 @@ function CurrentWeather({
             <Typography
               variant="h5"
               style={{
-                color: darkMode ? grey[100] : grey[600],
+                color: colorTexts,
                 textAlign: "center",
               }}
             >

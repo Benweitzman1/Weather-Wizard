@@ -28,7 +28,8 @@ function FourDayForecast({ getTemperature, getIcon, iconContext }) {
 
 const paperStyles = {
   padding: "20px",
-  marginTop: "10px",
+  marginTop: "20px",
+  marginBottom: "20px",
   backgroundColor: "transparent",
   borderRadius: "15px",
 };

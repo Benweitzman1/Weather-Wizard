@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import SearchBar from "../components/searchBar/SearchBar";
 import CurrentWeather from "../components/currentWeather/CurrentWeather";
 import FourDayForecast from "../components/fourDayForecast/FourDayForecast";
+import SportsActivities from "../components/sportsActivities/SportsActivities";
 import {
   searchCity,
   getCurrentConditions,
   getFourDayForecast,
+  getCurrentConditionsForSportsActivities,
 } from "../utils/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setWeatherForSelectedCity } from "../redux/slices/weatherSlice";
@@ -19,6 +21,13 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
   );
   const [isCelsius, setIsCelsius] = useState(true);
   const deafultCity = "Tel-Aviv";
+  const runnigId = "1";
+  const bicyclingId = "4";
+  const golfId = "5";
+  const tennisId = "6";
+  const fishingId = "13";
+  const skingId = "15";
+
   const iconContext = require.context("../images", false, /\.png$/);
 
   // Fetch initial weather data when component mounts or selected city changes
@@ -47,6 +56,10 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
           setSnackbarMessage
         );
 
+        console.log({ targetCity });
+        const SportsActivities = await fetchSportsData(targetCity.Key);
+        console.log({ SportsActivities });
+
         const currCity = {
           LocalizedName: targetCity.LocalizedName,
           Key: targetCity.Key,
@@ -54,6 +67,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
           TemperatureValue: conditions[0].Temperature.Imperial.Value,
           Forecast: fourDayForecast,
           WeatherIcon: conditions[0].WeatherIcon,
+          SportsActivities: SportsActivities,
         };
         dispatch(setWeatherForSelectedCity(currCity));
       } catch (error) {
@@ -65,6 +79,31 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
 
     fetchWeatherData();
   }, [city, dispatch]);
+
+  const fetchSportsData = async (cityKey) => {
+    const sports = {
+      running: runnigId,
+      tennis: tennisId,
+      bicycling: bicyclingId,
+      golf: golfId,
+      fishing: fishingId,
+      ski: skingId,
+    };
+
+    const sportsActivities = {};
+
+    for (const [sport, sportId] of Object.entries(sports)) {
+      sportsActivities[sport] = await getCurrentConditionsForSportsActivities(
+        cityKey,
+        sportId,
+        setSnackbarOpen,
+        setSnackbarMessage
+      );
+      sportsActivities[sport] = sportsActivities[sport][0];
+    }
+
+    return sportsActivities;
+  };
 
   const fahrenheitToCelsius = (fahrenheit) => {
     const celsius = (5 / 9) * (fahrenheit - 32);
@@ -102,6 +141,7 @@ function MainScreen({ setSnackbarOpen, setSnackbarMessage, darkMode }) {
             darkMode={darkMode}
             getIcon={getIcon}
           />
+          <SportsActivities darkMode={darkMode} />
           <FourDayForecast getTemperature={getTemperature} getIcon={getIcon} />
         </>
       ) : (
