@@ -4,6 +4,9 @@
 
 🚀 **Live Application**: [Weather Wizard](https://benweitzman1.github.io/ben-weitzman-17-08-2023/)
 
+![compScreenshot](./images/compScreenshot.png)
+![mobileScreenshot](./images/mobileScreenshot.png)
+
 ## Table of Contents
 
 - [Features](#features)
@@ -17,10 +20,12 @@
 ## Features
 
 - Search for a city to view its current weather conditions.
-- See a 5-day forecast for a city.
+- See a 4-day forecast for a city.
+- Receive sports activity recommendations based on the weather.
 - Add and remove cities from the favorites list.
 - Toggle between light and dark mode for better visibility at any time of day.
 - Switch between Celsius and Fahrenheit temperature scales.
+- Enhanced Sidebar with Home and Favorites navigation.
 - Redux state management for application data.
 - Routes managed with React Router.
 - Utilizes Material-UI (MUI) for a polished and responsive user interface.
@@ -31,11 +36,11 @@ To get a local copy up and running, follow these steps:
 
 1. Clone the repository to your local machine:
    ```bash
-   git clone https://github.com/Benweitzman1/Weather-Wizard.git
+   git clone https://github.com/Benweitzman1/ben-weitzman-17-08-2023.git
    ```
 2. Change into the project directory:
    ```
-   cd Weather-Wizard
+   cd ben-weitzman-17-08-2023
    ```
 3. Install dependencies:
    ```
@@ -58,12 +63,13 @@ Your app should now be running on http://localhost:3000.
 
 ## Structure
 
-Here's a brief outline of the main components and modules:
+Key components and modules:
 
 - App: The main application wrapper.
-- Header: The navigation header with links to home and favorites.
-- MainScreen: Displays the search bar, current weather conditions, and a 5-day forecast.
+- SideBar: An enhanced sidebar for easy navigation between main views.
+- MainScreen: Displays the search bar, current weather conditions, and a 4-day forecast.
 - FavoritesScreen: Displays a list of favorite cities and their current conditions.
+- SportsActivities: Provides recommended sports activities based on the weather today.
 - SearchBar: Lets users search for cities.
 - FavoritesList: Renders the list of favorite cities.
 - api: Contains API calls to retrieve weather data.
@@ -96,7 +102,12 @@ The application makes use of three primary API calls to fetch data:
    - **Method**: `GET`
    - **Purpose**: Utilizes the unique id of a city to fetch its current weather conditions. This includes the local observation time, a brief description of the current weather, the weather icon, temperature in both metric and imperial units, and associated links for more detailed weather information.
 
-3. **5-day Forecast**
+3. **4-day Forecast**
    - **Endpoint**: `/forecasts/v1/daily/5day/${locationKey}?apikey=${API_KEY}`
    - **Method**: `GET`
    - **Purpose**: Utilizes the unique id of a city to fetch its 5-day weather forecast. The forecast provides daily details like expected high and low temperatures, a general description of the day's weather conditions, and associated links for a detailed forecast.
+
+4. **Current Conditions for Sports Activities**
+   - **Endpoint**: `/indices/v1/daily/1day/${locationKey}/${sportId}?apikey=${API_KEY}`
+   - **Method**: `GET`
+   - **Purpose**: Fetches the recommended sports activities based on the weather for a city.
