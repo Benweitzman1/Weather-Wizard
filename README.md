@@ -78,7 +78,7 @@ Here's a brief outline of the main components and modules:
 To make API calls, the application uses the following base URL and API key:
 
 - **BASE_URL**: http://dataservice.accuweather.com
-- **API_KEY**: C6JUnDwjWHtffQhjZ3Q8cqN6vUDFPKJv
+- **API_KEY**: 4bYNiuKHZlBe2J0Qpsc1VLqVe24bYQST
 
 ## API Calls
 
