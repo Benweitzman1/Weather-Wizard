@@ -2,7 +2,7 @@
 
 **Weather Wizard** is a seamless and intuitive weather application designed to provide accurate, up-to-date weather information for any city worldwide. Built with React and leveraging modern weather APIs, our application aims to provide users with a clear understanding of the current weather conditions, as well as a 4-day forecast.
 
-🚀 **Live Application**: [Weather Wizard](https://benweitzman1.github.io/ben-weitzman-17-08-2023/)
+🚀 **Live Application**: [Weather Wizard](https://benweitzman1.github.io/weather-wizard/)
 
 ![compScreenshot](src/images/compScreenshot.png)
 ![mobileScreenshot](src/images/mobileScreenshot.png)
@@ -36,11 +36,11 @@ To get a local copy up and running, follow these steps:
 
 1. Clone the repository to your local machine:
    ```bash
-   git clone https://github.com/Benweitzman1/ben-weitzman-17-08-2023.git
+   git clone https://github.com/Benweitzman1/weather-wizard.git
    ```
 2. Change into the project directory:
    ```
-   cd ben-weitzman-17-08-2023
+   cd weather-wizard
    ```
 3. Install dependencies:
    ```
@@ -103,6 +103,7 @@ The application makes use of three primary API calls to fetch data:
    - **Purpose**: Utilizes the unique id of a city to fetch its current weather conditions. This includes the local observation time, a brief description of the current weather, the weather icon, temperature in both metric and imperial units, and associated links for more detailed weather information.
 
 3. **4-day Forecast**
+
    - **Endpoint**: `/forecasts/v1/daily/5day/${locationKey}?apikey=${API_KEY}`
    - **Method**: `GET`
    - **Purpose**: Utilizes the unique id of a city to fetch its 5-day weather forecast. The forecast provides daily details like expected high and low temperatures, a general description of the day's weather conditions, and associated links for a detailed forecast.
